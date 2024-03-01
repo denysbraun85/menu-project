@@ -1,5 +1,8 @@
-.menu {
-
+body {
+    @font-face {
+        font-family: 'Bahnschrift';
+        src: url('libs/font/Bahnschrift-Font-Family') format('ttf');
+    }
 }
 .menu__description {
     position: absolute;
@@ -8,8 +11,10 @@
     display: flex;
     align-content: center;
     justify-content: center;
+    font-family: Bahnschrift, sans-serif;
+    font-size: 55px;
     transform: translate(-50%, -50%);
-    color: white;
+    color: yellow;
 }
 .menu__slide {
     position: relative;
