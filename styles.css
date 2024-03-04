@@ -1,4 +1,5 @@
 body {
+    position: relative;
     @font-face {
         font-family: 'Bahnschrift';
         src: url('libs/font/Bahnschrift-Font-Family') format('ttf');
