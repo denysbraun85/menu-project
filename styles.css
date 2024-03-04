@@ -12,17 +12,29 @@ body {
     width: 100%;
 }
 
+.menu__slide[data-side="left"] .menu__description {
+    right: 0;
+    padding: 2vw 2vw 2vw 0;
+}
+
+.menu__slide[data-side="right"] .menu__description {
+    left: 0;
+    padding: 2vw 0 2vw 2vw;
+}
+
+.menu__slide[data-meal="dinner"] .menu__description .menu__title {
+    margin: 1.5vw auto;
+}
+
 /*Description*/
 .menu__description {
     position: absolute;
     top: 0;
-    right: 0;
     display: flex;
     align-content: center;
     flex-direction: column;
     width: 80%;
     height: 100%;
-    padding: 2vw 2vw 2vw 0;
     font-family: Bahnschrift, sans-serif;
     font-size: 55px;
 }
@@ -52,12 +64,17 @@ body {
     font-size: 4vw;
 }
 
+.menu__date-day {
+    text-decoration: underline;
+}
+
 .menu__title {
     line-height: 1;
     margin: 4vw auto;
     color: yellow;
     font-weight: 600;
     font-size: 4vw;
+    text-transform: uppercase;
 }
 
 .menu__meals-item {
