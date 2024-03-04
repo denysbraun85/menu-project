@@ -1,10 +1,19 @@
 body {
+    position: relative;
+    background-color: dimgrey;
     @font-face {
         font-family: 'Bahnschrift';
         src: url('libs/font/Bahnschrift-Font-Family') format('ttf');
     }
 }
 
+.menu {
+    display: none;
+}
+
+.menu.active {
+    display: block;
+}
 /*Parent box*/
 .menu__slide {
     position: relative;
@@ -20,6 +29,14 @@ body {
 .menu__slide[data-side="right"] .menu__description {
     left: 0;
     padding: 2vw 0 2vw 2vw;
+}
+
+.menu__slide[data-side="right"] .menu__description .menu__header-block {
+    flex-direction: row-reverse;
+}
+
+.menu__slide[data-side="right"] .menu__description .menu__header-block .menu__date {
+    align-items: start;
 }
 
 .menu__slide[data-meal="dinner"] .menu__description .menu__title {

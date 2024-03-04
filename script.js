@@ -1,3 +1,8 @@
+const AllImages  = document.querySelectorAll('img');
+const menu = document.getElementById('menu');
+const loader = document.getElementById('loader');
+
+//Carousel
 $(document).ready(function(){
     $('#menu').slick({
         dots: false,
@@ -5,9 +10,17 @@ $(document).ready(function(){
         infinite: true,
         speed: 1000,
         slidesToShow: 1,
-        // autoplay: true,
+        autoplay: true,
         // autoplaySpeed: 5000,
-        pauseOnHover: false,
+        // pauseOnHover: false,
         pauseOnFocus: false
     });
 })
+
+//Images check
+for (const images of AllImages) {
+    images.onload = function() {
+        loader.classList.remove('active');
+        menu.classList.add('active');
+    };
+}
