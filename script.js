@@ -3,8 +3,9 @@ const menu = document.getElementById('menu');
 const loader = document.getElementById('loader');
 
 $(document).ready(function(){
-    checkImages();
+    // checkImages();
     runCarousel();
+    // reloadPage();
 })
 
 //Run carousel
@@ -31,3 +32,12 @@ function checkImages() {
         };
     }
 }
+
+//Reload page
+function reloadPage() {
+    setTimeout(() => {
+        location.reload();
+        console.log('сторінка перезагрузилась');
+    }, 10000);
+}
+
