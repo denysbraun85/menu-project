@@ -5,7 +5,7 @@ const loader = document.getElementById('loader');
 $(document).ready(function(){
     checkImages();
     runCarousel();
-    reloadPage();
+    // reloadPage();
 })
 
 //Run carousel
