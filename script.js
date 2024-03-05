@@ -5,6 +5,7 @@ const loader = document.getElementById('loader');
 $(document).ready(function(){
     checkImages();
     runCarousel();
+    reloadPage();
 })
 
 //Run carousel
@@ -96,4 +97,12 @@ const WeekMenu = {
             cook_name: 'солдат Олена ДРАГАН'
         }
     }
+}
+
+//Reload page
+function reloadPage() {
+    setTimeout(() => {
+        location.reload();
+        console.log('сторінка перезагрузилась');
+    }, 10000);
 }
