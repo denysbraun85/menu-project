@@ -3,9 +3,16 @@ body {
     background-color: dimgrey;
     @font-face {
         font-family: 'Bahnschrift';
-        src: url('libs/font/Bahnschrift-Font-Family') format('ttf');
+        src: url('libs/font/Bahnschrift-Font-Family/BAHNSCHRIFT.TTF') format('ttf');
     }
 }
+
+/*@font-face {*/
+/*    font-family: bahnschrift;*/
+/*    font-style: normal;*/
+/*    font-weight: 400;*/
+/*    src: local('Bahnschrift'),url(https://myfonts.ru/fonts/1/3/2/3/Bahnschrift.ttf) format('truetype')*/
+/*}*/
 
 .menu {
     display: none;
