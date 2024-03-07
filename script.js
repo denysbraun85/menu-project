@@ -439,139 +439,95 @@ const formattedDate = date.toLocaleDateString();
 function BuildMenu() {
     for (const key in WeekMenu) {
         if (formattedDate === key) {
-            CreateTemplateBreakfast(
-                key,
-                WeekMenu[key].day,
-                WeekMenu[key].diet,
-                WeekMenu[key].breakfast.name,
-                WeekMenu[key].breakfast.dish_1.name,
-                WeekMenu[key].breakfast.dish_1.output,
-                WeekMenu[key].breakfast.dish_2.name,
-                WeekMenu[key].breakfast.dish_2.output,
-                WeekMenu[key].breakfast.dish_3.name,
-                WeekMenu[key].breakfast.dish_3.output,
-                WeekMenu[key].responsive.chief_position,
-                WeekMenu[key].responsive.chief_name,
-                WeekMenu[key].responsive.cook,
-                WeekMenu[key].responsive.cook_name
-            );
-            CreateTemplateDinner(
-                key,
-                WeekMenu[key].day,
-                WeekMenu[key].diet,
-                WeekMenu[key].dinner.name,
-                WeekMenu[key].dinner.dish_1.name,
-                WeekMenu[key].dinner.dish_1.output,
-                WeekMenu[key].dinner.dish_2.name,
-                WeekMenu[key].dinner.dish_2.output,
-                WeekMenu[key].dinner.dish_3.name,
-                WeekMenu[key].dinner.dish_3.output,
-                WeekMenu[key].dinner.dish_4.name,
-                WeekMenu[key].dinner.dish_4.output,
-                WeekMenu[key].responsive.chief_position,
-                WeekMenu[key].responsive.chief_name,
-                WeekMenu[key].responsive.cook,
-                WeekMenu[key].responsive.cook_name
-            );
-            CreateTemplateSupper(
-                key,
-                WeekMenu[key].day,
-                WeekMenu[key].diet,
-                WeekMenu[key].supper.name,
-                WeekMenu[key].supper.dish_1.name,
-                WeekMenu[key].supper.dish_1.output,
-                WeekMenu[key].supper.dish_2.name,
-                WeekMenu[key].supper.dish_2.output,
-                WeekMenu[key].responsive.chief_position,
-                WeekMenu[key].responsive.chief_name,
-                WeekMenu[key].responsive.cook,
-                WeekMenu[key].responsive.cook_name
-            );
+            CreateTemplateBreakfast(key, WeekMenu[key]);
+            CreateTemplateDinner(key, WeekMenu[key]);
+            CreateTemplateSupper(key, WeekMenu[key]);
         }
     }
 }
 
 
 // BREAKFAST Template
-function CreateTemplateBreakfast(
-    date, day, diet, meal_title_name, dish_1_name, dish_1_output, dish_2_name,
-    dish_2_output, dish_3_name, dish_3_output, chief_position, chief_name, cook, cook_name
-) {
-    const container = document.createElement('div');
-    console.log(container);
+function CreateTemplateBreakfast(date, menu_key) {
     const breakfast = `
-        <div class="menu__slide" data-meal="breakfast" data-side="right">
-            <img class="menu__img" src="img/left-side-img/1-left-min.jpg" alt="1-left-min">
-            <div class="menu__description">
-                CreateTemplateHeaderBlock(${date}, ${day}, ${diet});
-                CreateTemplateTitle(${meal_title_name});
-                <ul class="menu__meals-block">
-                    CreateTemplateDish(${dish_1_name}, ${dish_1_output});
-                    CreateTemplateDish(${dish_2_name}, ${dish_2_output});
-                    CreateTemplateDish(${dish_3_name}, ${dish_3_output});
-                </ul>
-                <ul class="menu__footer-block">
-                    CreateTemplateResponsible(${chief_position}, ${chief_name}, ${cook}, ${cook_name});
-                </ul>
-            </div>
-     `
-    console.log(breakfast);
-    return breakfast;
-}
-// DINNER Template
-function CreateTemplateDinner(
-    date, day, diet, meal_title_name, dish_1_name, dish_1_output, dish_2_name,
-    dish_2_output, dish_3_name, dish_3_output, dish_4_name, dish_4_output,
-    chief_position, chief_name, cook, cook_name
-) {
-    const dinner = `
-        <div class="menu__slide" data-meal="dinner" data-side="left">
+        <div class="menu__slide" id="breakfast" data-meal="breakfast" data-side="right">
             <img class="menu__img" src="img/right-side-img/1-right-min.jpg" alt="1-right-min">
             <div class="menu__description">
-                CreateTemplateHeaderBlock(${date}, ${day}, ${diet});
-                CreateTemplateTitle(${meal_title_name});
-                <ul class="menu__meals-block">
-                    CreateTemplateDish(${dish_1_name}, ${dish_1_output});
-                    CreateTemplateDish(${dish_2_name}, ${dish_2_output});
-                    CreateTemplateDish(${dish_3_name}, ${dish_3_output});
-                    CreateTemplateDish(${dish_4_name}, ${dish_4_output});
-                </ul>
-                <ul class="menu__footer-block">
-                    CreateTemplateResponsible(${chief_position}, ${chief_name}, ${cook}, ${cook_name});
-                </ul>
-            </div>
+                ${CreateTemplateHeaderBlock(date, menu_key.day, menu_key.diet)}
+                ${CreateTemplateTitle(menu_key.breakfast.name)}
+            <ul class="menu__meals-block">
+                ${CreateTemplateDish(menu_key.breakfast.dish_1.name, menu_key.breakfast.dish_1.output)}
+                ${CreateTemplateDish(menu_key.breakfast.dish_2.name, menu_key.breakfast.dish_2.output)}
+                ${CreateTemplateDish(menu_key.breakfast.dish_3.name, menu_key.breakfast.dish_3.output)}
+            </ul>
+            <ul class="menu__footer-block">
+                ${CreateTemplateResponsible(
+                    menu_key.responsive.chief_position,
+                    menu_key.responsive.chief_name,
+                    menu_key.responsive.cook,
+                    menu_key.responsive.cook_name
+                )}
+            </ul>
         </div>
     `
-    console.log(dinner)
-    return dinner;
+    menu.insertAdjacentHTML('afterbegin', breakfast);
 }
 // DINNER Template
-function CreateTemplateSupper(
-    date, day, diet, meal_title_name, dish_1_name, dish_1_output, dish_2_name,
-    dish_2_output, chief_position, chief_name, cook, cook_name
-) {
-    const supper = `
-        <div class="menu__slide" data-meal="supper" data-side="right">
-            <img class="menu__img" src="img/left-side-img/1-left-min.jpg" alt="1-left-min">
+function CreateTemplateDinner(date, menu_key) {
+    const dinner = `
+        <div class="menu__slide" id="dinner" data-meal="dinner" data-side="left">
+            <img class="menu__img" src="img/left-side-img/2-left-min.jpg" alt="2-left-min">
             <div class="menu__description">
-                CreateTemplateHeaderBlock(${date}, ${day}, ${diet});
-                CreateTemplateTitle(${meal_title_name});
+                ${CreateTemplateHeaderBlock(date, menu_key.day, menu_key.diet)}
+                ${CreateTemplateTitle(menu_key.dinner.name)}
                 <ul class="menu__meals-block">
-                    CreateTemplateDish(${dish_1_name}, ${dish_1_output});
-                    CreateTemplateDish(${dish_2_name}, ${dish_2_output});
+                    ${CreateTemplateDish(menu_key.dinner.dish_1.name, menu_key.dinner.dish_1.output)}
+                    ${CreateTemplateDish(menu_key.dinner.dish_2.name, menu_key.dinner.dish_2.output)}
+                    ${CreateTemplateDish(menu_key.dinner.dish_3.name, menu_key.dinner.dish_3.output)}
+                    ${CreateTemplateDish(menu_key.dinner.dish_4.name, menu_key.dinner.dish_4.output)}
                 </ul>
                 <ul class="menu__footer-block">
-                    CreateTemplateResponsible(${chief_position}, ${chief_name}, ${cook}, ${cook_name});
+                    ${CreateTemplateResponsible(
+                        menu_key.responsive.chief_position,
+                        menu_key.responsive.chief_name,
+                        menu_key.responsive.cook,
+                        menu_key.responsive.cook_name
+                    )}
                 </ul>
             </div>
         </div>
     `
-    console.log(supper);
-    return supper;
+
+    document.getElementById('breakfast').insertAdjacentHTML('afterend', dinner);
+}
+// SUPPER Template
+function CreateTemplateSupper(date, menu_key) {
+    const supper = `
+        <div class="menu__slide" id="supper" data-meal="supper" data-side="right">
+            <img class="menu__img" src="img/right-side-img/4-right-min.jpg" alt="4-right-min">
+            <div class="menu__description">
+                ${CreateTemplateHeaderBlock(date, menu_key.day, menu_key.diet)}
+                ${CreateTemplateTitle(menu_key.supper.name)}
+                <ul class="menu__meals-block">
+                    ${CreateTemplateDish(menu_key.supper.dish_1.name, menu_key.supper.dish_1.output)}
+                    ${CreateTemplateDish(menu_key.supper.dish_2.name, menu_key.supper.dish_2.output)}
+                </ul>
+                <ul class="menu__footer-block">
+                    ${CreateTemplateResponsible(
+                        menu_key.responsive.chief_position,
+                        menu_key.responsive.chief_name,
+                        menu_key.responsive.cook,
+                        menu_key.responsive.cook_name
+                    )}
+                </ul>
+            </div>
+        </div>
+    `
+    document.getElementById('dinner').insertAdjacentHTML('afterend', supper);
 }
 
 function CreateTemplateHeaderBlock(date, day, diet) {
-    return `
+    return ` 
         <div class="menu__header-block">
             <div class="menu__diet">${diet}</div>
             <div class="menu__date">
