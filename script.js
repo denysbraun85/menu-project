@@ -780,7 +780,9 @@ const WeekMenu = {
 $(document).ready(function(){
     BuildMenu();
     // checkImages();
-    runCarousel();
+    setTimeout(() => {
+        runCarousel();
+    }, 1000);
     // reloadPage();
 })
 
