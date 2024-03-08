@@ -1,6 +1,6 @@
 body {
     position: relative;
-    background-color: dimgrey;
+    /*background-color: dimgrey;*/
     @font-face {
         font-family: 'Bahnschrift';
         src: url('libs/font/Bahnschrift-Font-Family/Bahnschrift.TTF') format('ttf');
