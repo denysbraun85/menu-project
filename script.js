@@ -776,6 +776,7 @@ const WeekMenu = {
     },
 }
 
+//Main Scenario
 $(document).ready(function(){
     BuildMenu();
     // checkImages();
