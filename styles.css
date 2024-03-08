@@ -7,13 +7,9 @@ body {
     }
 }
 
-.menu {
-    display: none;
-}
-
-.menu.active {
-    display: block;
-}
+/*.menu.active {*/
+/*    display: block;*/
+/*}*/
 
 /*Parent box*/
 .menu__slide {
