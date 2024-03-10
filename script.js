@@ -828,14 +828,15 @@ const formattedDate = date.toLocaleDateString();
 
 // Build Menu
 function BuildMenu() {
-    for (const key in WeekMenu) {
-        if (formattedDate === key) {
-            testDiet.textContent = 'TEST TEST TEST'
-            // CreateTemplateBreakfast(key, WeekMenu[key]);
-            // CreateTemplateDinner(key, WeekMenu[key]);
-            // CreateTemplateSupper(key, WeekMenu[key]);
-        }
-    }
+    testDiet.textContent = 'TEST TEST TEST'
+    // for (const key in WeekMenu) {
+    //     if (formattedDate === key) {
+    //         testDiet.textContent = 'TEST TEST TEST'
+    //         // CreateTemplateBreakfast(key, WeekMenu[key]);
+    //         // CreateTemplateDinner(key, WeekMenu[key]);
+    //         // CreateTemplateSupper(key, WeekMenu[key]);
+    //     }
+    // }
 }
 BuildMenu();
 
