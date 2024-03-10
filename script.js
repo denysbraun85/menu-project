@@ -1,6 +1,7 @@
 const AllImages  = document.querySelectorAll('img');
 const menu = document.getElementById('menu');
 const loader = document.getElementById('loader');
+const testDiet = document.getElementById('test-diet');
 const WeekMenu = {
     // 1 week
     '04.03.2024': {
@@ -829,9 +830,10 @@ const formattedDate = date.toLocaleDateString();
 function BuildMenu() {
     for (const key in WeekMenu) {
         if (formattedDate === key) {
-            CreateTemplateBreakfast(key, WeekMenu[key]);
-            CreateTemplateDinner(key, WeekMenu[key]);
-            CreateTemplateSupper(key, WeekMenu[key]);
+            testDiet.textContent = 'TEST TEST TEST'
+            // CreateTemplateBreakfast(key, WeekMenu[key]);
+            // CreateTemplateDinner(key, WeekMenu[key]);
+            // CreateTemplateSupper(key, WeekMenu[key]);
         }
     }
 }
