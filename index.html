@@ -15,8 +15,6 @@
 
     <span class="loader" id="loader"></span>
     <div class="menu active" id="menu">
-        <script src="script.js"></script>
-
         <div class="menu__slide" data-meal="breakfast" id="breakfastSlide" data-side="left">
             <img class="menu__img" id="breakfastSlide__img" src="img/left-side-img/1-left-min.jpg" alt="1-left-min">
             <div class="menu__description">
@@ -129,6 +127,12 @@
             </div>
         </div>
     </div>
+
+    <script src="script.js"></script>
+    <script>
+        let menuActive = document.getElementById('menu');
+        menuActive.innerHTML = '<p>This is a paragraph inside the div.</p>';
+    </script>
 
     <script type="text/javascript" src="libs/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="libs/jquery-migrate-1.2.1.min.js"></script>
