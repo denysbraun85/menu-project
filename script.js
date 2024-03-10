@@ -778,7 +778,6 @@ const WeekMenu = {
 }
 
 //Main Scenario
-BuildMenu();
 
 $(document).ready(function(){
     // checkImages();
@@ -838,6 +837,7 @@ function BuildMenu() {
         }
     }
 }
+BuildMenu();
 
 
 // BREAKFAST Template
