@@ -811,27 +811,27 @@ const WeekMenu = {
         }
     },
 }
+BuildMenu();
 
 //Main Scenario
-$(document).ready(function(){
-    BuildMenu();
-    // checkImages();
-    setTimeout(() => {
-        runCarousel();
-    }, 1000);
-    // reloadPage();
-})
+// $(document).ready(function(){
+//     // checkImages();
+//     setTimeout(() => {
+//         runCarousel();
+//     }, 1000);
+//     // reloadPage();
+// })
 
 // Build Menu
 function BuildMenu() {
     for (const key in WeekMenu) {
         if (formattedDate === key) {
-            setBreakfastContent(key, WeekMenu[key]);
-            setDinnerContent(key, WeekMenu[key]);
-            setResponsible(WeekMenu[key]);
-            // CreateTemplateBreakfast(key, WeekMenu[key]);
-            // CreateTemplateDinner(key, WeekMenu[key]);
-            // CreateTemplateSupper(key, WeekMenu[key]);
+            // setBreakfastContent(key, WeekMenu[key]);
+            // setDinnerContent(key, WeekMenu[key]);
+            // setResponsible(WeekMenu[key]);
+            CreateTemplateBreakfast(key, WeekMenu[key]);
+            CreateTemplateDinner(key, WeekMenu[key]);
+            CreateTemplateSupper(key, WeekMenu[key]);
         }
     }
 }
@@ -867,8 +867,10 @@ function reloadPage() {
 }
 
 function setBreakfastContent(date, menu_key) {
-    breakfastSlideImage.setAttribute('src', 'img/left-side-img/1-left-min.jpg');
-    breakfastSlideImage.setAttribute('alt', '1-left-min');
+    // breakfastSlideImage.setAttribute('src', 'img/left-side-img/1-left-min.jpg');
+    // breakfastSlideImage.setAttribute('alt', '1-left-min');
+    console.log(date, menu_key);
+    console.log(breakfastSlideDiet);
     breakfastSlideDiet.textContent = menu_key.diet;
     breakfastSlideDay.textContent =  menu_key.day;
     breakfastSlideDate.textContent = date;
