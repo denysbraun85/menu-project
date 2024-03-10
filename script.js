@@ -3,7 +3,40 @@ const menu = document.getElementById('menu');
 const loader = document.getElementById('loader');
 const date = new Date();
 const formattedDate = date.toLocaleDateString();
-const testDiet = document.getElementById('test-diet');
+const breakfastSlide = document.getElementById('breakfastSlide');
+const dinnerSlide = document.getElementById('breakfastSlide');
+const supperSlide = document.getElementById('breakfastSlide');
+//Breakfast
+const breakfastSlideImage = document.getElementById('breakfastSlide__img');
+const breakfastSlideDiet = document.getElementById('breakfastSlide__diet');
+const breakfastSlideDay = document.getElementById('breakfastSlide__day');
+const breakfastSlideDate = document.getElementById('breakfastSlide__date');
+const breakfastSlideMealName = document.getElementById('breakfastSlide__meal-name');
+const breakfastSlideMeal1Name = document.getElementById('breakfastSlide__meal-1-name');
+const breakfastSlideMeal1Output = document.getElementById('breakfastSlide__meal-1-output');
+const breakfastSlideMeal2Name = document.getElementById('breakfastSlide__meal-2-name');
+const breakfastSlideMeal2Output = document.getElementById('breakfastSlide__meal-2-output');
+const breakfastSlideMeal3Name = document.getElementById('breakfastSlide__meal-3-name');
+const breakfastSlideMeal3Output = document.getElementById('breakfastSlide__meal-3-output');
+//Dinner
+const dinnerSlideImage = document.getElementById('dinnerSlide__img');
+const dinnerSlideDiet = document.getElementById('dinnerSlide__diet');
+const dinnerSlideDay = document.getElementById('dinnerSlide__day');
+const dinnerSlideDate = document.getElementById('dinnerSlide__date');
+const dinnerSlideMealName = document.getElementById('dinnerSlide__meal-name');
+const dinnerSlideMeal1Name = document.getElementById('dinnerSlide__meal-1-name');
+const dinnerSlideMeal1Output = document.getElementById('dinnerSlide__meal-1-output');
+const dinnerSlideMeal2Name = document.getElementById('dinnerSlide__meal-2-name');
+const dinnerSlideMeal2Output = document.getElementById('dinnerSlide__meal-2-output');
+const dinnerSlideMeal3Name = document.getElementById('dinnerSlide__meal-3-name');
+const dinnerSlideMeal3Output = document.getElementById('dinnerSlide__meal-3-output');
+const dinnerSlideMeal4Name = document.getElementById('dinnerSlide__meal-4-name');
+const dinnerSlideMeal4Output = document.getElementById('dinnerSlide__meal-4-output');
+//Responsible
+const chiefPosition = document.querySelector('.menu__responsible-chief-position');
+const chiefName = document.querySelector('.menu__responsible-chief-name');
+const cookPosition = document.querySelector('.menu__responsible-cook-position');
+const cookName = document.querySelector('.menu__responsible-cook-name');
 const WeekMenu = {
     // 1 week
     '04.03.2024': {
@@ -350,26 +383,26 @@ const WeekMenu = {
                 output: '250'
             },
             dish_3: {
-                name: `<i>II сніданок:  </i>йогурт`,
+                name: `йогурт`,
                 output: '115'
             },
         },
         dinner: {
             name: 'Обід',
             dish_1: {
-                name: `<i>Закуска:  </i>Ікра бурячкова`,
+                name: `Ікра бурячкова`,
                 output: '120'
             },
             dish_2: {
-                name: `<i>I страва:  </i>Капусняк «Львівський», сметана`,
+                name: `Капусняк «Львівський», сметана`,
                 output: '500/18'
             },
             dish_3: {
-                name: `<i>II страва:  </i>Биточок смажений з кашею рисовою розсипчастою з маслом вершковим`,
+                name: `Биточок смажений з кашею рисовою розсипчастою з маслом вершковим`,
                 output: '271/98'
             },
             dish_4: {
-                name: `<i>III страва:  </i>Хліб, компот, фрукт`,
+                name: `Хліб, компот, фрукт`,
                 output: '250'
             },
         },
@@ -406,7 +439,7 @@ const WeekMenu = {
                 output: '250'
             },
             dish_3: {
-                name: `<i>II сніданок:  </i>йогурт`,
+                name: `йогурт`,
                 output: '115'
             },
         },
@@ -793,9 +826,12 @@ $(document).ready(function(){
 function BuildMenu() {
     for (const key in WeekMenu) {
         if (formattedDate === key) {
-            CreateTemplateBreakfast(key, WeekMenu[key]);
-            CreateTemplateDinner(key, WeekMenu[key]);
-            CreateTemplateSupper(key, WeekMenu[key]);
+            setBreakfastContent(key, WeekMenu[key]);
+            setDinnerContent(key, WeekMenu[key]);
+            setResponsible(WeekMenu[key]);
+            // CreateTemplateBreakfast(key, WeekMenu[key]);
+            // CreateTemplateDinner(key, WeekMenu[key]);
+            // CreateTemplateSupper(key, WeekMenu[key]);
         }
     }
 }
@@ -828,6 +864,44 @@ function reloadPage() {
         location.reload();
         console.log('сторінка перезагрузилась');
     }, 10000);
+}
+
+function setBreakfastContent(date, menu_key) {
+    breakfastSlideImage.setAttribute('src', 'img/left-side-img/1-left-min.jpg');
+    breakfastSlideImage.setAttribute('alt', '1-left-min');
+    breakfastSlideDiet.textContent = menu_key.diet;
+    breakfastSlideDay.textContent =  menu_key.day;
+    breakfastSlideDate.textContent = date;
+    breakfastSlideMealName.textContent = menu_key.breakfast.name;
+    breakfastSlideMeal1Name.textContent = menu_key.breakfast.dish_1.name;
+    breakfastSlideMeal1Output.textContent = menu_key.breakfast.dish_1.output;
+    breakfastSlideMeal2Name.textContent = menu_key.breakfast.dish_2.name;
+    breakfastSlideMeal2Output.textContent = menu_key.breakfast.dish_2.output;
+    breakfastSlideMeal3Name.textContent = menu_key.breakfast.dish_3.name;
+    breakfastSlideMeal3Output.textContent = menu_key.breakfast.dish_3.output;
+}
+function setDinnerContent(date, menu_key) {
+    dinnerSlideImage.setAttribute('src', 'img/right-side-img/1-right-min.jpg');
+    dinnerSlideImage.setAttribute('alt', '1-right-min');
+    dinnerSlideDiet.textContent = menu_key.diet;
+    dinnerSlideDay.textContent =  menu_key.day;
+    dinnerSlideDate.textContent = date;
+    dinnerSlideMealName.textContent = menu_key.dinner.name;
+    dinnerSlideMeal1Name.textContent = menu_key.dinner.dish_1.name;
+    dinnerSlideMeal1Output.textContent = menu_key.dinner.dish_1.output;
+    dinnerSlideMeal2Name.textContent = menu_key.dinner.dish_2.name;
+    dinnerSlideMeal2Output.textContent = menu_key.dinner.dish_2.output;
+    dinnerSlideMeal3Name.textContent = menu_key.dinner.dish_3.name;
+    dinnerSlideMeal3Output.textContent = menu_key.dinner.dish_3.output;
+    dinnerSlideMeal4Name.textContent = menu_key.dinner.dish_4.name;
+    dinnerSlideMeal4Output.textContent = menu_key.dinner.dish_4.output;
+}
+
+function setResponsible(menu_key) {
+    chiefPosition.textContent = menu_key.responsive.chief_position;
+    chiefName.textContent = menu_key.responsive.chief_name;
+    cookPosition.textContent = menu_key.responsive.cook;
+    cookName.textContent = menu_key.responsive.cook_name;
 }
 
 
