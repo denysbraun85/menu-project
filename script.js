@@ -1,6 +1,8 @@
 const AllImages  = document.querySelectorAll('img');
 const menu = document.getElementById('menu');
 const loader = document.getElementById('loader');
+const date = new Date();
+const formattedDate = date.toLocaleDateString();
 const testDiet = document.getElementById('test-diet');
 const WeekMenu = {
     // 1 week
@@ -778,7 +780,7 @@ const WeekMenu = {
 }
 
 //Main Scenario
-
+BuildMenu();
 $(document).ready(function(){
     // checkImages();
     setTimeout(() => {
@@ -787,6 +789,16 @@ $(document).ready(function(){
     // reloadPage();
 })
 
+// Build Menu
+function BuildMenu() {
+    for (const key in WeekMenu) {
+        if (formattedDate === key) {
+            CreateTemplateBreakfast(key, WeekMenu[key]);
+            CreateTemplateDinner(key, WeekMenu[key]);
+            CreateTemplateSupper(key, WeekMenu[key]);
+        }
+    }
+}
 // Run carousel
 function runCarousel() {
     $('#menu').slick({
@@ -801,7 +813,6 @@ function runCarousel() {
         pauseOnFocus: false
     });
 }
-
 // Images check
 function checkImages() {
     for (const images of AllImages) {
@@ -811,7 +822,6 @@ function checkImages() {
         };
     }
 }
-
 // Reload page
 function reloadPage() {
     setTimeout(() => {
@@ -819,26 +829,6 @@ function reloadPage() {
         console.log('сторінка перезагрузилась');
     }, 10000);
 }
-
-
-
-// Date
-const date = new Date();
-const formattedDate = date.toLocaleDateString();
-
-// Build Menu
-function BuildMenu() {
-    testDiet.textContent = 'TEST TEST TEST'
-    // for (const key in WeekMenu) {
-    //     if (formattedDate === key) {
-    //         testDiet.textContent = 'TEST TEST TEST'
-    //         // CreateTemplateBreakfast(key, WeekMenu[key]);
-    //         // CreateTemplateDinner(key, WeekMenu[key]);
-    //         // CreateTemplateSupper(key, WeekMenu[key]);
-    //     }
-    // }
-}
-BuildMenu();
 
 
 // BREAKFAST Template
