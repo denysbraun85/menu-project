@@ -814,6 +814,7 @@ const WeekMenu = {
 
 //Main Scenario
 $(document).ready(function(){
+    BuildMenu();
     // checkImages();
     setTimeout(() => {
         runCarousel();
@@ -1018,5 +1019,4 @@ function CreateTemplateResponsible(chief_position, chief_name, cook, cook_name) 
     `
 }
 
-BuildMenu();
 
