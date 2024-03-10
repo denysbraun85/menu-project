@@ -811,7 +811,6 @@ const WeekMenu = {
         }
     },
 }
-BuildMenu();
 
 //Main Scenario
 // $(document).ready(function(){
@@ -821,17 +820,82 @@ BuildMenu();
 //     }, 1000);
 //     // reloadPage();
 // })
+BuildMenu();
 
 // Build Menu
 function BuildMenu() {
     for (const key in WeekMenu) {
         if (formattedDate === key) {
+            console.log(key, WeekMenu[key]);
+            menu.innerHTML = `
+             <div class="menu__slide" id="breakfast" data-meal="breakfast" data-side="right">
+                <img class="menu__img" src="img/right-side-img/1-right-min.jpg" alt="1-right-min">
+                <div class="menu__description">
+                    ${CreateTemplateHeaderBlock(key, WeekMenu[key].day, WeekMenu[key].diet)}
+                    ${CreateTemplateTitle(WeekMenu[key].breakfast.name)}
+                </div>
+                <ul class="menu__meals-block">
+                    ${CreateTemplateDish(WeekMenu[key].breakfast.dish_1.name, WeekMenu[key].breakfast.dish_1.output)}
+                    ${CreateTemplateDish(WeekMenu[key].breakfast.dish_2.name, WeekMenu[key].breakfast.dish_2.output)}
+                    ${CreateTemplateDish(WeekMenu[key].breakfast.dish_3.name, WeekMenu[key].breakfast.dish_3.output)}
+                </ul>
+                <ul class="menu__footer-block">
+                    ${CreateTemplateResponsible(
+                    WeekMenu[key].responsive.chief_position,
+                    WeekMenu[key].responsive.chief_name,
+                    WeekMenu[key].responsive.cook,
+                    WeekMenu[key].responsive.cook_name
+                )}
+                </ul>
+            </div>
+        <div class="menu__slide" id="dinner" data-meal="dinner" data-side="left">
+            <img class="menu__img" src="img/left-side-img/2-left-min.jpg" alt="2-left-min">
+            <div class="menu__description">
+                ${CreateTemplateHeaderBlock(key, WeekMenu[key].day, WeekMenu[key].diet)}
+                ${CreateTemplateTitle(WeekMenu[key].dinner.name)}
+                <ul class="menu__meals-block">
+                    ${CreateTemplateDish(WeekMenu[key].dinner.dish_1.name, WeekMenu[key].dinner.dish_1.output)}
+                    ${CreateTemplateDish(WeekMenu[key].dinner.dish_2.name, WeekMenu[key].dinner.dish_2.output)}
+                    ${CreateTemplateDish(WeekMenu[key].dinner.dish_3.name, WeekMenu[key].dinner.dish_3.output)}
+                    ${CreateTemplateDish(WeekMenu[key].dinner.dish_4.name, WeekMenu[key].dinner.dish_4.output)}
+                </ul>
+                <ul class="menu__footer-block">
+                    ${CreateTemplateResponsible(
+                WeekMenu[key].responsive.chief_position,
+                WeekMenu[key].responsive.chief_name,
+                WeekMenu[key].responsive.cook,
+                WeekMenu[key].responsive.cook_name
+            )}
+                </ul>
+            </div>
+        </div>
+        <div class="menu__slide" id="supper" data-meal="supper" data-side="right">
+            <img class="menu__img" src="img/right-side-img/4-right-min.jpg" alt="4-right-min">
+            <div class="menu__description">
+                ${CreateTemplateHeaderBlock(key, WeekMenu[key].day, WeekMenu[key].diet)}
+                ${CreateTemplateTitle(WeekMenu[key].supper.name)}
+                <ul class="menu__meals-block">
+                    ${CreateTemplateDish(WeekMenu[key].supper.dish_1.name, WeekMenu[key].supper.dish_1.output)}
+                    ${CreateTemplateDish(WeekMenu[key].supper.dish_2.name, WeekMenu[key].supper.dish_2.output)}
+                </ul>
+                <ul class="menu__footer-block">
+                    ${CreateTemplateResponsible(
+                WeekMenu[key].responsive.chief_position,
+                WeekMenu[key].responsive.chief_name,
+                WeekMenu[key].responsive.cook,
+                WeekMenu[key].responsive.cook_name
+            )}
+                </ul>
+            </div>
+        </div>
+        
+            `;
             // setBreakfastContent(key, WeekMenu[key]);
             // setDinnerContent(key, WeekMenu[key]);
             // setResponsible(WeekMenu[key]);
-            CreateTemplateBreakfast(key, WeekMenu[key]);
-            CreateTemplateDinner(key, WeekMenu[key]);
-            CreateTemplateSupper(key, WeekMenu[key]);
+            // CreateTemplateBreakfast(key, WeekMenu[key]);
+            // CreateTemplateDinner(key, WeekMenu[key]);
+            // CreateTemplateSupper(key, WeekMenu[key]);
         }
     }
 }
