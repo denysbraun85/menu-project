@@ -778,8 +778,9 @@ const WeekMenu = {
 }
 
 //Main Scenario
+BuildMenu();
+
 $(document).ready(function(){
-    BuildMenu();
     // checkImages();
     setTimeout(() => {
         runCarousel();
