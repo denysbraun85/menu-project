@@ -3,7 +3,6 @@ const menu = document.getElementById('menu');
 const loader = document.getElementById('loader');
 const date = new Date();
 const formattedDate = date.toLocaleDateString();
-const testDiet = document.getElementById('test-diet');
 const WeekMenu = {
     // 1 week
     '04.03.2024': {
